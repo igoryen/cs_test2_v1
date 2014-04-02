@@ -3,12 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using INT422TestTwo.Models;
 
 namespace INT422TestTwo.Models
 {
     public class Initiallizer : DropCreateDatabaseAlways<DataContext>
     {
         protected override void Seed(DataContext dc)
+        {
+          InitializeIdentityForEF(dc);
+          InitializeTables(dc);
+          base.Seed(dc);
+        }
+
+        private void InitializeIdentityForEF(DataContext context) {
+
+          var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+          var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+          string AdminRole = "Admin";
+          if (!RoleManager.RoleExists(AdminRole)) {
+            var AdminRoleCreateResult = RoleManager.Create(new IdentityRole(AdminRole));
+          }
+
+          string UserRole = "User";
+          if (!RoleManager.RoleExists(UserRole)) {
+            var UserRoleCreateResult = RoleManager.Create(new IdentityRole(UserRole));
+          }
+
+
+          var user1 = new ApplicationUser();
+          string user1Pw = "123456";
+          var user1Info = new MyUserInfo() { FirstName = "User", LastName = "Uno", PhoneNo = "647-111-1111" };
+          user1.UserName = "UserUno";
+          user1.MyUserInfo = user1Info;
+          var user1CreateResult = UserManager.Create(user1, user1Pw);
+          if (user1CreateResult.Succeeded) {
+            var addUser1ToAdminRoleResult = UserManager.AddToRole(user1.Id, AdminRole);
+          }
+
+          var user2 = new ApplicationUser();
+          string user2Pw = "123456";
+          var user2Info = new MyUserInfo() { FirstName = "User", LastName = "Duo", PhoneNo = "647-222-2222" };
+          user2.UserName = "UserDuo";
+          user2.MyUserInfo = user2Info;
+          var user2CreateResult = UserManager.Create(user2, user2Pw);
+          if (user2CreateResult.Succeeded) {
+            var addUser2ToUserRoleResult = UserManager.AddToRole(user2.Id, UserRole);
+          }
+
+        }
+
+        private void InitializeTables(DataContext dc)
         {
             Genre g = new Genre("Fantasy");
             dc.Genres.Add(g);
@@ -124,5 +172,6 @@ namespace INT422TestTwo.Models
 
             dc.SaveChanges();
         }
+
     }
 }

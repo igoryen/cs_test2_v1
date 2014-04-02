@@ -131,4 +131,20 @@ namespace INT422TestTwo.Models
         /// </summary>
         public List<Movie> Movies { get; set; }
     }
+
+    public class MyUserInfo {
+      public int Id { get; set; }
+
+      [Required]
+      [Display(Name="First Name")]
+      public string FirstName { get; set; }
+
+      [Required]
+      [Display(Name = "Last Name")]
+      public string LastName { get; set; }
+
+      [Required]
+      [Display(Name = "Phone Number")]
+      public string PhoneNo { get; set; }
+    }
 }
