@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,12 +11,19 @@ namespace INT422TestTwo.Models
     /// <summary>
     /// Class can be used to query/store data in Database
     /// </summary>
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
         /// <summary>
         /// Default Constructor, passes name to DbContext
         /// </summary>
         public DataContext() : base("name=INT422TestTwoDataContext") { }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+          base.OnModelCreating(modelBuilder);
+          // Change the name of the table to be Users instead of AspNetUsers
+          modelBuilder.Entity<IdentityUser>().ToTable("Users");
+          modelBuilder.Entity<ApplicationUser>().ToTable("Users");
+        }
 
         /// <summary>
         /// Will hold all the Movies stored in Database
