@@ -7,6 +7,8 @@ using System.Web.Mvc;
 
 namespace INT422TestTwo.Controllers
 {
+
+  [Authorize]
     public class GenreController : Controller
     {
         RepoGenre Repo_Genre = new RepoGenre();
@@ -26,6 +28,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Genre/Create
+      [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -50,6 +53,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Genre/Edit/5
+      [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -74,6 +78,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Genre/Delete/5
+      [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();

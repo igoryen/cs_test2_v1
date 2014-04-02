@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace INT422TestTwo.Controllers
 {
+  [Authorize]
     public class MovieController : Controller
     {
         RepoMovie Repo_Movie = new RepoMovie();
@@ -27,6 +28,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Movie/Create
+      [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.GenresList = Repo_Movie.getSelectGenresList();
@@ -71,6 +73,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Movie/Edit/5
+      [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View(Repo_Movie.GetMovieFull(id));
@@ -93,6 +96,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Movie/Delete/5
+      [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();

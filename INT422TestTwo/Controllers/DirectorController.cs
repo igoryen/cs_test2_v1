@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace INT422TestTwo.Controllers
 {
+  [Authorize]
     public class DirectorController : Controller
     {
         RepoDirector Repo_Director = new RepoDirector();
@@ -27,6 +28,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Director/Create
+      [Authorize(Roles="Admin")]
         public ActionResult Create()
         {
             return View();
@@ -51,6 +53,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Director/Edit/5
+      [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -75,6 +78,7 @@ namespace INT422TestTwo.Controllers
 
         //
         // GET: /Director/Delete/5
+      [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();
