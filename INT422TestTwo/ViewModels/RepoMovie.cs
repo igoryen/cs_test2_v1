@@ -172,5 +172,12 @@ namespace INT422TestTwo.ViewModels
           dc.Movies.Remove(itemToDelete);
           dc.SaveChanges();
         }
+
+        public MovieFull editMovieAM(MovieFull editItem) {
+          var itemToEdit = dc.Movies.Find(editItem.Id);
+          dc.Entry(itemToEdit).CurrentValues.SetValues(editItem);
+          dc.SaveChanges();
+          return Mapper.Map<MovieFull>(editItem);
+        }
     }
 }

@@ -76,21 +76,20 @@ namespace INT422TestTwo.Controllers
       [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
-            return View(Repo_Movie.GetMovieFull(id));
+            return View(Repo_Movie.getMovieFullAM(id));
         }
 
         //
         // POST: /Movie/Edit/5
         [HttpPost]
-        public ActionResult Edit(MovieFull mf, FormCollection collection)
+        public ActionResult Edit(MovieFull mf)
         {
-            try
-            {
-                return RedirectToAction("Index");
+            var newItem = Repo_Movie.editMovieAM(mf);
+            if (newItem == null) {
+              return View("Error");
             }
-            catch
-            {
-                return View();
+            else {
+              return RedirectToAction("Index");
             }
         }
 
