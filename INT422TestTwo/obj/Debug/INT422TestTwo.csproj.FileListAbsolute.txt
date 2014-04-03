@@ -108,3 +108,6 @@ C:\aaa\vat\c#\tests\2\v1\INT422TestTwo\INT422TestTwo\bin\Microsoft.Owin.Security
 C:\aaa\vat\c#\tests\2\v1\INT422TestTwo\INT422TestTwo\obj\Debug\INT422TestTwo.csprojResolveAssemblyReference.cache
 C:\aaa\vat\c#\tests\2\v1\INT422TestTwo\INT422TestTwo\obj\Debug\INT422TestTwo.dll
 C:\aaa\vat\c#\tests\2\v1\INT422TestTwo\INT422TestTwo\obj\Debug\INT422TestTwo.pdb
+C:\aaa\vat\c#\tests\2\v1\INT422TestTwo\INT422TestTwo\bin\AutoMapper.Net4.dll
+C:\aaa\vat\c#\tests\2\v1\INT422TestTwo\INT422TestTwo\bin\AutoMapper.dll
+C:\aaa\vat\c#\tests\2\v1\INT422TestTwo\INT422TestTwo\bin\AutoMapper.xml
