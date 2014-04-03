@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 
 namespace INT422TestTwo.ViewModels
 {
@@ -159,6 +160,17 @@ namespace INT422TestTwo.ViewModels
         {
             SelectList genresList = new SelectList(dc.Genres, "Id", "Name");
             return genresList;
+        }
+
+        public MovieFull getMovieFullAM(int? id) {
+          var movie = dc.Movies.Include("Genres").Include("Director").SingleOrDefault(n => n.Id == id);
+          return Mapper.Map<MovieFull>(movie);
+        }
+
+        public void deleteMovie(int? id) {
+          var itemToDelete = dc.Movies.Find(id);
+          dc.Movies.Remove(itemToDelete);
+          dc.SaveChanges();
         }
     }
 }

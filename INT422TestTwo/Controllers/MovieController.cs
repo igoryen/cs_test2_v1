@@ -99,24 +99,20 @@ namespace INT422TestTwo.Controllers
       [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var movie = Repo_Movie.getMovieFullAM(id);
+            return View(movie);
         }
 
         //
         // POST: /Movie/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+
+                Repo_Movie.deleteMovie(id);
 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+
         }
     }
 }
