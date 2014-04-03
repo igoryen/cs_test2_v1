@@ -37,7 +37,7 @@ namespace INT422TestTwo.Models
           var user1 = new ApplicationUser();
           string user1Pw = "123456";
           var user1Info = new MyUserInfo() { FirstName = "User", LastName = "Uno", PhoneNo = "647-111-1111" };
-          user1.UserName = "UserUno";
+          user1.UserName = "Admino";
           user1.MyUserInfo = user1Info;
           var user1CreateResult = UserManager.Create(user1, user1Pw);
           if (user1CreateResult.Succeeded) {
@@ -47,7 +47,7 @@ namespace INT422TestTwo.Models
           var user2 = new ApplicationUser();
           string user2Pw = "123456";
           var user2Info = new MyUserInfo() { FirstName = "User", LastName = "Duo", PhoneNo = "647-222-2222" };
-          user2.UserName = "UserDuo";
+          user2.UserName = "Usero";
           user2.MyUserInfo = user2Info;
           var user2CreateResult = UserManager.Create(user2, user2Pw);
           if (user2CreateResult.Succeeded) {

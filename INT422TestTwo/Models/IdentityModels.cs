@@ -45,5 +45,7 @@ namespace INT422TestTwo.Models
         public System.Data.Entity.DbSet<INT422TestTwo.ViewModels.MovieFull> MovieFulls { get; set; }
         public System.Data.Entity.DbSet<INT422TestTwo.ViewModels.GenreFull> GenreFulls { get; set; }
         public System.Data.Entity.DbSet<INT422TestTwo.ViewModels.DirectorFull> DirectorFulls { get; set; }
+
+        public System.Data.Entity.DbSet<INT422TestTwo.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
